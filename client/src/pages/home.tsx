@@ -8,17 +8,48 @@ import SkillsForm from "@/components/form/SkillsForm";
 import ProjectsForm from "@/components/form/ProjectsForm";
 import ResumePreview from "@/components/preview/ResumePreview";
 import { useResume } from "@/context/ResumeContext";
-import { usePrintPDF } from "@/lib/print-utils";
 import { useTranslation } from "react-i18next";
+import { toast } from "@/hooks/use-toast";
 
 export default function Home() {
-  const { saveChanges } = useResume();
+  const { saveChanges, settings } = useResume();
   const resumeRef = useRef<HTMLDivElement>(null);
-  const { handlePrint } = usePrintPDF();
   const { t } = useTranslation();
 
-  const handleDownloadPDF = () => {
-    handlePrint(resumeRef);
+  const handleDownloadPDF = async () => {
+    if (!resumeRef.current) {
+      toast({
+        title: t('toasts.pdf.error.title'),
+        description: t('toasts.pdf.error.description'),
+        variant: "destructive",
+      });
+      return;
+    }
+
+    toast({
+      title: t('toasts.pdf.processing.title'),
+      description: t('toasts.pdf.processing.description'),
+    });
+
+    // Dynamically import to avoid hook order issues
+    try {
+      const { generatePDF } = await import("@/lib/print-utils");
+      const element = resumeRef.current;
+      const paperSize = settings.paperSize;
+      
+      // Give UI time to update, then generate PDF
+      setTimeout(() => {
+        generatePDF(element, "resume.pdf", paperSize);
+      }, 500);
+      
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      toast({
+        title: t('toasts.pdf.error.title'),
+        description: t('toasts.pdf.error.description'),
+        variant: "destructive",
+      });
+    }
   };
 
   return (
