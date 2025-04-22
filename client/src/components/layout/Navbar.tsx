@@ -2,10 +2,13 @@ import { Link, useLocation } from "wouter";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/lib/theme-provider";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar() {
   const [location] = useLocation();
   const { theme, setTheme } = useTheme();
+  const { t } = useTranslation();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -38,7 +41,7 @@ export default function Navbar() {
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
               <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">
-                Resume Builder
+                {t('app.title')}
               </span>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -50,7 +53,7 @@ export default function Navbar() {
                       : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
                   } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
                 >
-                  Home
+                  {t('nav.home')}
                 </a>
               </Link>
               <Link href="/templates">
@@ -61,7 +64,7 @@ export default function Navbar() {
                       : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
                   } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
                 >
-                  Templates
+                  {t('nav.templates')}
                 </a>
               </Link>
               <Link href="/settings">
@@ -72,12 +75,13 @@ export default function Navbar() {
                       : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
                   } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
                 >
-                  Settings
+                  {t('nav.settings')}
                 </a>
               </Link>
             </div>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"
@@ -104,7 +108,7 @@ export default function Navbar() {
                   : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
               } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
             >
-              Home
+              {t('nav.home')}
             </a>
           </Link>
           <Link href="/templates">
@@ -115,7 +119,7 @@ export default function Navbar() {
                   : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
               } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
             >
-              Templates
+              {t('nav.templates')}
             </a>
           </Link>
           <Link href="/settings">
@@ -126,7 +130,7 @@ export default function Navbar() {
                   : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
               } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
             >
-              Settings
+              {t('nav.settings')}
             </a>
           </Link>
         </div>
