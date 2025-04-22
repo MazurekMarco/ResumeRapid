@@ -1,12 +1,15 @@
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/lib/theme-provider";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
+// Get base from environment
+const base = import.meta.env.BASE_URL;
+
 export default function Navbar() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
 
@@ -15,7 +18,15 @@ export default function Navbar() {
   };
 
   const isActiveTab = (path: string) => {
-    return location === path;
+    const currentPath = location.startsWith(base) 
+      ? location.slice(base.length) || "/"
+      : location;
+    return currentPath === path;
+  };
+
+  const navigate = (to: string) => {
+    const path = to === "/" ? base : `${base}${to}`;
+    setLocation(path);
   };
 
   return (
@@ -45,39 +56,36 @@ export default function Navbar() {
               </span>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <Link href="/">
-                <a
-                  className={`${
-                    isActiveTab("/")
-                      ? "border-indigo-500 text-gray-900 dark:text-white"
-                      : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
-                  } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                >
-                  {t('nav.home')}
-                </a>
-              </Link>
-              <Link href="/templates">
-                <a
-                  className={`${
-                    isActiveTab("/templates")
-                      ? "border-indigo-500 text-gray-900 dark:text-white"
-                      : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
-                  } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                >
-                  {t('nav.templates')}
-                </a>
-              </Link>
-              <Link href="/settings">
-                <a
-                  className={`${
-                    isActiveTab("/settings")
-                      ? "border-indigo-500 text-gray-900 dark:text-white"
-                      : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
-                  } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                >
-                  {t('nav.settings')}
-                </a>
-              </Link>
+              <a
+                onClick={() => navigate("/")}
+                className={`${
+                  isActiveTab("/")
+                    ? "border-indigo-500 text-gray-900 dark:text-white"
+                    : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
+                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium cursor-pointer`}
+              >
+                {t('nav.home')}
+              </a>
+              <a
+                onClick={() => navigate("/templates")}
+                className={`${
+                  isActiveTab("/templates")
+                    ? "border-indigo-500 text-gray-900 dark:text-white"
+                    : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
+                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium cursor-pointer`}
+              >
+                {t('nav.templates')}
+              </a>
+              <a
+                onClick={() => navigate("/settings")}
+                className={`${
+                  isActiveTab("/settings")
+                    ? "border-indigo-500 text-gray-900 dark:text-white"
+                    : "border-transparent text-gray-500 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-500 hover:text-gray-700 dark:hover:text-gray-100"
+                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium cursor-pointer`}
+              >
+                {t('nav.settings')}
+              </a>
             </div>
           </div>
           <div className="flex items-center space-x-3">
@@ -100,39 +108,36 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className="sm:hidden" id="mobile-menu">
         <div className="pt-2 pb-3 space-y-1">
-          <Link href="/">
-            <a
-              className={`${
-                isActiveTab("/")
-                  ? "bg-indigo-50 dark:bg-slate-700 border-indigo-500 text-indigo-700 dark:text-white"
-                  : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
-              {t('nav.home')}
-            </a>
-          </Link>
-          <Link href="/templates">
-            <a
-              className={`${
-                isActiveTab("/templates")
-                  ? "bg-indigo-50 dark:bg-slate-700 border-indigo-500 text-indigo-700 dark:text-white"
-                  : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
-              {t('nav.templates')}
-            </a>
-          </Link>
-          <Link href="/settings">
-            <a
-              className={`${
-                isActiveTab("/settings")
-                  ? "bg-indigo-50 dark:bg-slate-700 border-indigo-500 text-indigo-700 dark:text-white"
-                  : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
-            >
-              {t('nav.settings')}
-            </a>
-          </Link>
+          <a
+            onClick={() => navigate("/")}
+            className={`${
+              isActiveTab("/")
+                ? "bg-indigo-50 dark:bg-slate-700 border-indigo-500 text-indigo-700 dark:text-white"
+                : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
+            } block pl-3 pr-4 py-2 border-l-4 text-base font-medium cursor-pointer`}
+          >
+            {t('nav.home')}
+          </a>
+          <a
+            onClick={() => navigate("/templates")}
+            className={`${
+              isActiveTab("/templates")
+                ? "bg-indigo-50 dark:bg-slate-700 border-indigo-500 text-indigo-700 dark:text-white"
+                : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
+            } block pl-3 pr-4 py-2 border-l-4 text-base font-medium cursor-pointer`}
+          >
+            {t('nav.templates')}
+          </a>
+          <a
+            onClick={() => navigate("/settings")}
+            className={`${
+              isActiveTab("/settings")
+                ? "bg-indigo-50 dark:bg-slate-700 border-indigo-500 text-indigo-700 dark:text-white"
+                : "border-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-gray-500"
+            } block pl-3 pr-4 py-2 border-l-4 text-base font-medium cursor-pointer`}
+          >
+            {t('nav.settings')}
+          </a>
         </div>
       </div>
     </nav>

@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -9,7 +9,30 @@ import Settings from "@/pages/settings";
 import { ResumeProvider } from "@/context/ResumeContext";
 import { ThemeProvider } from "@/lib/theme-provider";
 
+// Get base from environment
+const base = import.meta.env.BASE_URL;
+
+// Custom hook for handling base path in routes
+const useBasePath = () => {
+  const [location, setLocation] = useLocation();
+  
+  const navigate = (to: string) => {
+    // Ensure the base path is always included
+    const path = to === "/" ? base : `${base}${to}`;
+    setLocation(path);
+  };
+
+  return { location, navigate };
+};
+
 function Router() {
+  const { location } = useBasePath();
+  
+  // Remove base path from location for route matching
+  const path = location.startsWith(base) 
+    ? location.slice(base.length) || "/"
+    : location;
+
   return (
     <Switch>
       <Route path="/" component={Home} />
