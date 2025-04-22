@@ -182,5 +182,9 @@
   "language": {
     "en": "Inglese",
     "it": "Italiano"
+  },
+  "notFound": {
+    "title": "Pagina Non Trovata",
+    "message": "La pagina che stai cercando non esiste o è stata spostata."
   }
 }
