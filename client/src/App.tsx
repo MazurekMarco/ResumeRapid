@@ -12,21 +12,8 @@ import { ThemeProvider } from "@/lib/theme-provider";
 // Get base from environment
 const base = import.meta.env.BASE_URL;
 
-// Custom hook for handling base path in routes
-const useBasePath = () => {
-  const [location, setLocation] = useLocation();
-  
-  const navigate = (to: string) => {
-    // Ensure the base path is always included
-    const path = to === "/" ? base : `${base}${to}`;
-    setLocation(path);
-  };
-
-  return { location, navigate };
-};
-
 function Router() {
-  const { location } = useBasePath();
+  const [location] = useLocation();
   
   // Remove base path from location for route matching
   const path = location.startsWith(base) 
@@ -34,7 +21,7 @@ function Router() {
     : location;
 
   return (
-    <Switch>
+    <Switch location={path}>
       <Route path="/" component={Home} />
       <Route path="/templates" component={Templates} />
       <Route path="/settings" component={Settings} />
