@@ -9,11 +9,13 @@ import ProjectsForm from "@/components/form/ProjectsForm";
 import ResumePreview from "@/components/preview/ResumePreview";
 import { useResume } from "@/context/ResumeContext";
 import { usePrintPDF } from "@/lib/print-utils";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const { saveChanges } = useResume();
   const resumeRef = useRef<HTMLDivElement>(null);
   const { handlePrint } = usePrintPDF();
+  const { t } = useTranslation();
 
   const handleDownloadPDF = () => {
     handlePrint(resumeRef);
@@ -38,14 +40,14 @@ export default function Home() {
                 className="bg-indigo-600 hover:bg-indigo-700 text-white"
               >
                 <Save className="h-4 w-4 mr-1.5" />
-                Save Changes
+                {t('form.actions.save')}
               </Button>
               <Button
                 onClick={handleDownloadPDF}
                 className="bg-green-600 hover:bg-green-700 text-white"
               >
                 <FileDown className="h-4 w-4 mr-1.5" />
-                Download PDF
+                {t('form.actions.download')}
               </Button>
             </div>
           </div>

@@ -2,10 +2,12 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useResume } from "@/context/ResumeContext";
+import { useTranslation } from "react-i18next";
 
 export default function PersonalInfoForm() {
   const { resumeData, updatePersonalInfo } = useResume();
   const { personalInfo } = resumeData;
+  const { t } = useTranslation();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -17,12 +19,12 @@ export default function PersonalInfoForm() {
   return (
     <div className="bg-white dark:bg-slate-800 shadow-md rounded-lg p-6">
       <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
-        Personal Information
+        {t('form.personal.title')}
       </h2>
       <div className="space-y-4">
         <div>
           <Label htmlFor="fullName" className="text-gray-700 dark:text-gray-300">
-            Full Name
+            {t('form.personal.fullName')}
           </Label>
           <Input
             type="text"
@@ -37,7 +39,7 @@ export default function PersonalInfoForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <Label htmlFor="email" className="text-gray-700 dark:text-gray-300">
-              Email
+              {t('form.personal.email')}
             </Label>
             <Input
               type="email"
@@ -50,7 +52,7 @@ export default function PersonalInfoForm() {
           </div>
           <div>
             <Label htmlFor="phone" className="text-gray-700 dark:text-gray-300">
-              Phone
+              {t('form.personal.phone')}
             </Label>
             <Input
               type="tel"
@@ -65,7 +67,7 @@ export default function PersonalInfoForm() {
 
         <div>
           <Label htmlFor="location" className="text-gray-700 dark:text-gray-300">
-            Location
+            {t('form.personal.location')}
           </Label>
           <Input
             type="text"
@@ -79,7 +81,7 @@ export default function PersonalInfoForm() {
 
         <div>
           <Label htmlFor="summary" className="text-gray-700 dark:text-gray-300">
-            Professional Summary
+            {t('form.personal.summary')}
           </Label>
           <Textarea
             id="summary"

@@ -1,11 +1,13 @@
 import { useResume } from "@/context/ResumeContext";
 import { formatMonthYear } from "@/lib/format-date";
 import { forwardRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const ResumePreview = forwardRef<HTMLDivElement>(
   (props, ref) => {
     const { resumeData } = useResume();
     const { personalInfo, educationList, experienceList, skills, projectsList } = resumeData;
+    const { t } = useTranslation();
 
     const skillsArray = skills.split(',').map(skill => skill.trim()).filter(Boolean);
 
@@ -30,7 +32,7 @@ const ResumePreview = forwardRef<HTMLDivElement>(
 
             {experienceList.length > 0 && (
               <div className="mb-5">
-                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">Experience</h2>
+                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">{t('resume.experience')}</h2>
                 {experienceList.map((exp) => (
                   <div key={exp.id} className="mb-4">
                     <div className="flex flex-col sm:flex-row sm:justify-between mb-1">
@@ -51,7 +53,7 @@ const ResumePreview = forwardRef<HTMLDivElement>(
 
             {educationList.length > 0 && (
               <div className="mb-5">
-                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">Education</h2>
+                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">{t('resume.education')}</h2>
                 {educationList.map((edu) => (
                   <div key={edu.id} className="mb-4">
                     <div className="flex flex-col sm:flex-row sm:justify-between mb-1">
@@ -66,7 +68,7 @@ const ResumePreview = forwardRef<HTMLDivElement>(
                         <>, <span className="text-gray-700">{edu.fieldOfStudy}</span></>
                       )}
                       {edu.gpa && (
-                        <span className="text-sm text-gray-600ml-2"> GPA: {edu.gpa}</span>
+                        <span className="text-sm text-gray-600 ml-2"> GPA: {edu.gpa}</span>
                       )}
                     </div>
                   </div>
@@ -76,7 +78,7 @@ const ResumePreview = forwardRef<HTMLDivElement>(
 
             {skillsArray.length > 0 && (
               <div className="mb-5">
-                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">Skills</h2>
+                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">{t('resume.skills')}</h2>
                 <div className="flex flex-wrap gap-1.5">
                   {skillsArray.map((skill, index) => (
                     <span key={index} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">
@@ -89,7 +91,7 @@ const ResumePreview = forwardRef<HTMLDivElement>(
 
             {projectsList.length > 0 && (
               <div>
-                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">Projects</h2>
+                <h2 className="text-base font-bold border-b border-gray-300 pb-1 mb-2">{t('resume.projects')}</h2>
                 {projectsList.map((project) => (
                   <div key={project.id} className="mb-4">
                     <div className="flex flex-col sm:flex-row sm:justify-between mb-1">

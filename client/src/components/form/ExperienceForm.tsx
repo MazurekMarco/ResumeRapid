@@ -4,10 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useResume } from "@/context/ResumeContext";
+import { useTranslation } from "react-i18next";
 
 export default function ExperienceForm() {
   const { resumeData, addExperience, updateExperience, removeExperience } = useResume();
   const { experienceList } = resumeData;
+  const { t } = useTranslation();
 
   const handleChange = (
     id: string,
@@ -21,7 +23,7 @@ export default function ExperienceForm() {
     <div className="bg-white dark:bg-slate-800 shadow-md rounded-lg p-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
-          Work Experience
+          {t('form.experience.title')}
         </h2>
         <Button
           onClick={addExperience}
@@ -29,7 +31,7 @@ export default function ExperienceForm() {
           className="bg-indigo-600 hover:bg-indigo-700 text-white"
         >
           <PlusCircle className="h-4 w-4 mr-1" />
-          Add
+          {t('form.experience.addButton')}
         </Button>
       </div>
 
@@ -42,7 +44,7 @@ export default function ExperienceForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor={`jobTitle-${experience.id}`} className="text-gray-700 dark:text-gray-300">
-                  Job Title
+                  {t('form.experience.jobTitle')}
                 </Label>
                 <Input
                   type="text"
@@ -55,7 +57,7 @@ export default function ExperienceForm() {
               </div>
               <div>
                 <Label htmlFor={`company-${experience.id}`} className="text-gray-700 dark:text-gray-300">
-                  Company
+                  {t('form.experience.company')}
                 </Label>
                 <Input
                   type="text"
@@ -70,7 +72,7 @@ export default function ExperienceForm() {
 
             <div>
               <Label htmlFor={`location-${experience.id}`} className="text-gray-700 dark:text-gray-300">
-                Location
+                {t('form.experience.location')}
               </Label>
               <Input
                 type="text"
@@ -85,7 +87,7 @@ export default function ExperienceForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor={`startDate-${experience.id}`} className="text-gray-700 dark:text-gray-300">
-                  Start Date
+                  {t('form.experience.startDate')}
                 </Label>
                 <Input
                   type="month"
@@ -98,7 +100,7 @@ export default function ExperienceForm() {
               </div>
               <div>
                 <Label htmlFor={`endDate-${experience.id}`} className="text-gray-700 dark:text-gray-300">
-                  End Date
+                  {t('form.experience.endDate')}
                 </Label>
                 <Input
                   type="month"
@@ -113,7 +115,7 @@ export default function ExperienceForm() {
 
             <div>
               <Label htmlFor={`description-${experience.id}`} className="text-gray-700 dark:text-gray-300">
-                Description
+                {t('form.experience.description')}
               </Label>
               <Textarea
                 id={`description-${experience.id}`}
@@ -122,7 +124,7 @@ export default function ExperienceForm() {
                 value={experience.description}
                 onChange={(e) => handleChange(experience.id, e)}
                 className="mt-1 w-full border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white"
-                placeholder="• Use bullet points to describe your responsibilities and achievements&#10;• Start each point with an action verb&#10;• Include quantifiable achievements where possible"
+                placeholder={t('form.experience.placeholder')}
               />
             </div>
           </div>
@@ -135,7 +137,7 @@ export default function ExperienceForm() {
               className="text-gray-700 dark:text-gray-200 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-slate-600"
             >
               <Trash2 className="h-4 w-4 mr-1 text-gray-500 dark:text-gray-400" />
-              Remove
+              {t('form.experience.removeButton')}
             </Button>
           </div>
         </div>
@@ -143,7 +145,7 @@ export default function ExperienceForm() {
 
       {experienceList.length === 0 && (
         <div className="text-center py-4 text-gray-500 dark:text-gray-400">
-          No experience entries. Click "Add" to add your work experience.
+          {t('form.experience.emptyMessage')}
         </div>
       )}
     </div>

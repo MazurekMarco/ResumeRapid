@@ -4,10 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useResume } from "@/context/ResumeContext";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectsForm() {
   const { resumeData, addProject, updateProject, removeProject } = useResume();
   const { projectsList } = resumeData;
+  const { t } = useTranslation();
 
   const handleChange = (
     id: string,
@@ -21,7 +23,7 @@ export default function ProjectsForm() {
     <div className="bg-white dark:bg-slate-800 shadow-md rounded-lg p-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
-          Projects
+          {t('form.projects.title')}
         </h2>
         <Button
           onClick={addProject}
@@ -29,7 +31,7 @@ export default function ProjectsForm() {
           className="bg-indigo-600 hover:bg-indigo-700 text-white"
         >
           <PlusCircle className="h-4 w-4 mr-1" />
-          Add
+          {t('form.projects.addButton')}
         </Button>
       </div>
 
@@ -42,7 +44,7 @@ export default function ProjectsForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor={`title-${project.id}`} className="text-gray-700 dark:text-gray-300">
-                  Project Title
+                  {t('form.projects.projectTitle')}
                 </Label>
                 <Input
                   type="text"
@@ -55,7 +57,7 @@ export default function ProjectsForm() {
               </div>
               <div>
                 <Label htmlFor={`link-${project.id}`} className="text-gray-700 dark:text-gray-300">
-                  Project Link
+                  {t('form.projects.projectLink')}
                 </Label>
                 <Input
                   type="url"
@@ -71,7 +73,7 @@ export default function ProjectsForm() {
 
             <div>
               <Label htmlFor={`description-${project.id}`} className="text-gray-700 dark:text-gray-300">
-                Description
+                {t('form.projects.description')}
               </Label>
               <Textarea
                 id={`description-${project.id}`}
@@ -80,7 +82,7 @@ export default function ProjectsForm() {
                 value={project.description}
                 onChange={(e) => handleChange(project.id, e)}
                 className="mt-1 w-full border-gray-300 dark:border-gray-600 dark:bg-slate-700 dark:text-white"
-                placeholder="Describe your project, technologies used, and your role"
+                placeholder={t('form.projects.placeholder')}
               />
             </div>
           </div>
@@ -93,7 +95,7 @@ export default function ProjectsForm() {
               className="text-gray-700 dark:text-gray-200 bg-white dark:bg-slate-700 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-slate-600"
             >
               <Trash2 className="h-4 w-4 mr-1 text-gray-500 dark:text-gray-400" />
-              Remove
+              {t('form.projects.removeButton')}
             </Button>
           </div>
         </div>
@@ -101,7 +103,7 @@ export default function ProjectsForm() {
 
       {projectsList.length === 0 && (
         <div className="text-center py-4 text-gray-500 dark:text-gray-400">
-          No project entries. Click "Add" to add your projects.
+          {t('form.projects.emptyMessage')}
         </div>
       )}
     </div>
