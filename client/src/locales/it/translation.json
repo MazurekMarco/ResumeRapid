@@ -1,0 +1,186 @@
+{
+  "app": {
+    "title": "Costruttore di Curriculum",
+    "theme": {
+      "dark": "Modalità Scura",
+      "light": "Modalità Chiara"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "templates": "Modelli",
+    "settings": "Impostazioni"
+  },
+  "form": {
+    "personal": {
+      "title": "Informazioni Personali",
+      "fullName": "Nome Completo",
+      "email": "Email",
+      "phone": "Telefono",
+      "location": "Località",
+      "summary": "Riepilogo Professionale"
+    },
+    "education": {
+      "title": "Istruzione",
+      "addButton": "Aggiungi",
+      "removeButton": "Rimuovi",
+      "school": "Istituto",
+      "degree": "Titolo di Studio",
+      "fieldOfStudy": "Indirizzo di Studio",
+      "startDate": "Data di Inizio",
+      "endDate": "Data di Fine",
+      "gpa": "Media Voti",
+      "emptyMessage": "Nessuna voce di istruzione. Clicca \"Aggiungi\" per aggiungere la tua formazione."
+    },
+    "experience": {
+      "title": "Esperienza Lavorativa",
+      "addButton": "Aggiungi",
+      "removeButton": "Rimuovi",
+      "jobTitle": "Qualifica",
+      "company": "Azienda",
+      "location": "Località",
+      "startDate": "Data di Inizio",
+      "endDate": "Data di Fine",
+      "description": "Descrizione",
+      "placeholder": "• Usa punti elenco per descrivere le tue responsabilità e risultati\n• Inizia ogni punto con un verbo d'azione\n• Includi risultati quantificabili dove possibile",
+      "emptyMessage": "Nessuna esperienza lavorativa. Clicca \"Aggiungi\" per aggiungere la tua esperienza lavorativa."
+    },
+    "skills": {
+      "title": "Competenze",
+      "label": "Competenze (separate da virgole)",
+      "placeholder": "JavaScript, React, CSS, HTML, Node.js, ecc.",
+      "helper": "Elenca le tue competenze separate da virgole. Appariranno come tag nel tuo curriculum."
+    },
+    "projects": {
+      "title": "Progetti",
+      "addButton": "Aggiungi",
+      "removeButton": "Rimuovi",
+      "projectTitle": "Titolo del Progetto",
+      "projectLink": "Link al Progetto",
+      "description": "Descrizione",
+      "placeholder": "Descrivi il tuo progetto, le tecnologie utilizzate e il tuo ruolo",
+      "emptyMessage": "Nessun progetto. Clicca \"Aggiungi\" per aggiungere i tuoi progetti."
+    },
+    "actions": {
+      "save": "Salva Modifiche",
+      "download": "Scarica PDF"
+    }
+  },
+  "resume": {
+    "experience": "Esperienza",
+    "education": "Istruzione",
+    "skills": "Competenze",
+    "projects": "Progetti"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "appearance": {
+      "title": "Aspetto",
+      "darkMode": "Modalità Scura"
+    },
+    "resumeSettings": {
+      "title": "Impostazioni del Curriculum",
+      "paperSize": "Formato Carta",
+      "paperSizes": {
+        "letter": "Letter (8.5 x 11 in)",
+        "a4": "A4 (210 x 297 mm)",
+        "legal": "Legal (8.5 x 14 in)"
+      },
+      "fontStyle": "Stile del Carattere",
+      "fontStyles": {
+        "modern": "Moderno (Inter)",
+        "classic": "Classico (Times New Roman)",
+        "contemporary": "Contemporaneo (Roboto)",
+        "elegant": "Elegante (Playfair Display)"
+      }
+    },
+    "dataManagement": {
+      "title": "Gestione Dati",
+      "exportData": "Esporta Dati",
+      "importData": "Importa Dati",
+      "clearData": "Cancella Tutti i Dati",
+      "confirmation": {
+        "title": "Sei assolutamente sicuro?",
+        "description": "Questa azione non può essere annullata. Eliminerà definitivamente i dati del tuo curriculum e li ripristinerà ai valori predefiniti.",
+        "cancel": "Annulla",
+        "confirm": "Sì, cancella tutti i dati"
+      }
+    }
+  },
+  "templates": {
+    "title": "Modelli di Curriculum",
+    "description": "Scegli dalla nostra collezione di modelli di curriculum professionali.",
+    "classic": {
+      "title": "Classico",
+      "description": "Layout pulito e tradizionale"
+    },
+    "modern": {
+      "title": "Moderno",
+      "description": "Design contemporaneo a due colonne"
+    },
+    "minimalist": {
+      "title": "Minimalista",
+      "description": "Approccio semplice ed elegante"
+    },
+    "professional": {
+      "title": "Professionale",
+      "description": "Layout strutturato e formale"
+    },
+    "creative": {
+      "title": "Creativo",
+      "description": "Design audace per campi creativi"
+    },
+    "executive": {
+      "title": "Dirigenziale",
+      "description": "Design sofisticato per ruoli senior"
+    },
+    "selectedButton": "Selezionato",
+    "selectButton": "Seleziona"
+  },
+  "toasts": {
+    "save": {
+      "title": "Successo",
+      "description": "Il tuo curriculum è stato salvato"
+    },
+    "autoSave": {
+      "title": "Salvataggio Automatico",
+      "description": "Il tuo curriculum è stato salvato automaticamente"
+    },
+    "error": {
+      "title": "Errore",
+      "description": "Si è verificato un errore. Riprova."
+    },
+    "import": {
+      "success": {
+        "title": "Successo",
+        "description": "Dati del curriculum importati con successo"
+      },
+      "error": {
+        "title": "Importazione fallita",
+        "description": "Impossibile leggere il file. Riprova."
+      }
+    },
+    "export": {
+      "title": "Successo",
+      "description": "Dati del curriculum esportati con successo"
+    },
+    "pdf": {
+      "processing": {
+        "title": "Elaborazione",
+        "description": "Generando PDF..."
+      },
+      "success": {
+        "title": "Successo",
+        "description": "PDF scaricato con successo"
+      },
+      "error": {
+        "title": "Errore",
+        "description": "Impossibile generare il PDF. Riprova."
+      }
+    }
+  },
+  "language": {
+    "en": "Inglese",
+    "it": "Italiano"
+  }
+}

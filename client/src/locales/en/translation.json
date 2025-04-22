@@ -1,0 +1,186 @@
+{
+  "app": {
+    "title": "Resume Builder",
+    "theme": {
+      "dark": "Dark Mode",
+      "light": "Light Mode"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "templates": "Templates",
+    "settings": "Settings"
+  },
+  "form": {
+    "personal": {
+      "title": "Personal Information",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location",
+      "summary": "Professional Summary"
+    },
+    "education": {
+      "title": "Education",
+      "addButton": "Add",
+      "removeButton": "Remove",
+      "school": "School",
+      "degree": "Degree",
+      "fieldOfStudy": "Field of Study",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "gpa": "GPA",
+      "emptyMessage": "No education entries. Click \"Add\" to add your education."
+    },
+    "experience": {
+      "title": "Work Experience",
+      "addButton": "Add",
+      "removeButton": "Remove",
+      "jobTitle": "Job Title",
+      "company": "Company",
+      "location": "Location",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "description": "Description",
+      "placeholder": "• Use bullet points to describe your responsibilities and achievements\n• Start each point with an action verb\n• Include quantifiable achievements where possible",
+      "emptyMessage": "No experience entries. Click \"Add\" to add your work experience."
+    },
+    "skills": {
+      "title": "Skills",
+      "label": "Skills (comma separated)",
+      "placeholder": "JavaScript, React, CSS, HTML, Node.js, etc.",
+      "helper": "List your skills separated by commas. They will appear as tags in your resume."
+    },
+    "projects": {
+      "title": "Projects",
+      "addButton": "Add",
+      "removeButton": "Remove",
+      "projectTitle": "Project Title",
+      "projectLink": "Project Link",
+      "description": "Description",
+      "placeholder": "Describe your project, technologies used, and your role",
+      "emptyMessage": "No project entries. Click \"Add\" to add your projects."
+    },
+    "actions": {
+      "save": "Save Changes",
+      "download": "Download PDF"
+    }
+  },
+  "resume": {
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "projects": "Projects"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": {
+      "title": "Appearance",
+      "darkMode": "Dark Mode"
+    },
+    "resumeSettings": {
+      "title": "Resume Settings",
+      "paperSize": "Paper Size",
+      "paperSizes": {
+        "letter": "Letter (8.5 x 11 in)",
+        "a4": "A4 (210 x 297 mm)",
+        "legal": "Legal (8.5 x 14 in)"
+      },
+      "fontStyle": "Font Style",
+      "fontStyles": {
+        "modern": "Modern (Inter)",
+        "classic": "Classic (Times New Roman)",
+        "contemporary": "Contemporary (Roboto)",
+        "elegant": "Elegant (Playfair Display)"
+      }
+    },
+    "dataManagement": {
+      "title": "Data Management",
+      "exportData": "Export Data",
+      "importData": "Import Data",
+      "clearData": "Clear All Data",
+      "confirmation": {
+        "title": "Are you absolutely sure?",
+        "description": "This action cannot be undone. This will permanently delete your resume data and reset to default values.",
+        "cancel": "Cancel",
+        "confirm": "Yes, clear all data"
+      }
+    }
+  },
+  "templates": {
+    "title": "Resume Templates",
+    "description": "Choose from our collection of professional resume templates.",
+    "classic": {
+      "title": "Classic",
+      "description": "Clean and traditional layout"
+    },
+    "modern": {
+      "title": "Modern",
+      "description": "Contemporary two-column design"
+    },
+    "minimalist": {
+      "title": "Minimalist",
+      "description": "Simple and elegant approach"
+    },
+    "professional": {
+      "title": "Professional",
+      "description": "Structured and formal layout"
+    },
+    "creative": {
+      "title": "Creative",
+      "description": "Bold design for creative fields"
+    },
+    "executive": {
+      "title": "Executive",
+      "description": "Sophisticated design for senior roles"
+    },
+    "selectedButton": "Selected",
+    "selectButton": "Select"
+  },
+  "toasts": {
+    "save": {
+      "title": "Success",
+      "description": "Your resume has been saved"
+    },
+    "autoSave": {
+      "title": "Auto-saved",
+      "description": "Your resume has been automatically saved"
+    },
+    "error": {
+      "title": "Error",
+      "description": "An error occurred. Please try again."
+    },
+    "import": {
+      "success": {
+        "title": "Success",
+        "description": "Resume data imported successfully"
+      },
+      "error": {
+        "title": "Import failed",
+        "description": "Could not read the file. Please try again."
+      }
+    },
+    "export": {
+      "title": "Success",
+      "description": "Resume data exported successfully"
+    },
+    "pdf": {
+      "processing": {
+        "title": "Processing",
+        "description": "Generating PDF..."
+      },
+      "success": {
+        "title": "Success",
+        "description": "PDF downloaded successfully"
+      },
+      "error": {
+        "title": "Error",
+        "description": "Failed to generate PDF. Please try again."
+      }
+    }
+  },
+  "language": {
+    "en": "English",
+    "it": "Italian"
+  }
+}
