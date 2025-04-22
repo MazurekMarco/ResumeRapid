@@ -5,7 +5,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/ResumeRapid/' : '/',
+  base: '/ResumeRapid/',
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'client/src') },

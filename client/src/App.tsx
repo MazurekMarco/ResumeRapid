@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router as WouterRouter } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -25,13 +25,15 @@ function App() {
     <ThemeProvider defaultTheme="light" storageKey="resume-theme">
       <ResumeProvider>
         <TooltipProvider>
-          <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-slate-900 transition-colors duration-200">
-            <Navbar />
-            <main className="flex-grow">
-              <Router />
-            </main>
-            <Toaster />
-          </div>
+          <WouterRouter base="/ResumeRapid">
+            <div className="min-h-screen flex flex-col bg-gray-100 dark:bg-slate-900 transition-colors duration-200">
+              <Navbar />
+              <main className="flex-grow">
+                <Router />
+              </main>
+              <Toaster />
+            </div>
+          </WouterRouter>
         </TooltipProvider>
       </ResumeProvider>
     </ThemeProvider>
